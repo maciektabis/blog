@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 import {useState} from 'react';
 import {Modal} from 'react-bootstrap';
 import {Navigate} from 'react-router-dom';
-const SinglePost = (props) => {
+const SinglePost = () => {
 	const {id} = useParams();
 	const postsData = useSelector((state) => getPostById(state, id));
 	const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const SinglePost = (props) => {
 			<header className='d-flex justify-content-between mt-2 mb-2 p-2'>
 				<h2>{postsData.title}</h2>
 				<div>
-					<Link key={props.id} to={'/post/edit/' + props.id}>
+					<Link key={postsData.id} to={'/post/edit/' + postsData.id}>
 						<Button variant='btn btn-outline-primary m-1'>Edit</Button>
 					</Link>
 					<Button variant='btn btn-outline-danger m-1' onClick={handleShow}>
