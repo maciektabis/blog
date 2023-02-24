@@ -11,6 +11,7 @@ const PostTable = () => {
 			{posts.map((post) => (
 				<Posts
 					key={post.id}
+					id={post.id}
 					title={post.title}
 					description={post.shortDescription}
 					content={post.content}
