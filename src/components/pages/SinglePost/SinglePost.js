@@ -9,6 +9,8 @@ import {Link} from 'react-router-dom';
 import {useState} from 'react';
 import {Modal} from 'react-bootstrap';
 import {Navigate} from 'react-router-dom';
+import {dateToStr} from '../../../utils/dateToStr';
+
 const SinglePost = () => {
 	const {id} = useParams();
 	const postsData = useSelector((state) => getPostById(state, id));
@@ -52,8 +54,8 @@ const SinglePost = () => {
 				</div>
 			</header>
 			<p>Author: {postsData.author}</p>
-			<p>Published: {postsData.publishedDate}</p>
-			<p>{postsData.shortDescription}</p>
+			<p>Published: {dateToStr(postsData.publishedDate)}</p>
+			<p dangerouslySetInnerHTML={{__html: postsData.content}} />
 		</div>
 	);
 };

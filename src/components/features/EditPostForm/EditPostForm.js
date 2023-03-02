@@ -5,7 +5,8 @@ import {useParams} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {editPost, getPostById} from '../../../redux/postsRedux';
 import {Navigate} from 'react-router-dom';
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 const EditPostForm = () => {
 	const {id} = useParams();
 	const editPostsData = useSelector((state) => getPostById(state, id));
