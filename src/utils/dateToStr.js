@@ -1,3 +1,3 @@
 export const dateToStr = (publishedDate) => {
-	return publishedDate.toLocaleDateString('en-US');
-};
+	return publishedDate.toLocaleDateString("en-US");
+  };

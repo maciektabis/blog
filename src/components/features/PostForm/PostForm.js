@@ -14,6 +14,8 @@ const PostForm = ({action, actionText, ...props}) => {
 	const [shortDescription, setShortDescription] = useState(
 		props.shortDescription || ''
 	);
+	const [category, setCategory] = useState(props.category || '');
+
 	const [content, setContent] = useState(props.content || '');
 
 	const {
@@ -27,7 +29,14 @@ const PostForm = ({action, actionText, ...props}) => {
 		setContentError(!content);
 		setDateError(!publishedDate);
 		if (content && publishedDate) {
-			action({title, author, publishedDate, shortDescription, content});
+			action({
+				title,
+				author,
+				publishedDate,
+				shortDescription,
+				content,
+				category,
+			});
 		}
 	};
 
@@ -65,18 +74,29 @@ const PostForm = ({action, actionText, ...props}) => {
 						</small>
 					)}
 				</Form.Group>
-
 				<Form.Group className='mb-3'>
 					<Form.Label>Published</Form.Label>
 					<DatePicker
 						selected={publishedDate}
 						onChange={(date) => setPublishedDate(date)}
+						dateFormat='yyyy/MM/dd'
 					/>
 					{dateError && (
 						<small className='d-block form-text text-danger mt-2'>
 							Date can't be empty
 						</small>
 					)}
+				</Form.Group>
+				<Form.Group className='mb-3'>
+					<Form.Label>Category</Form.Label>
+					<Form.Select
+						value={category}
+						onChange={(e: any) => setCategory(e.currentTarget.value)}
+					>
+						<option value='Movies'>Movies</option>
+						<option value='News'>News</option>
+						<option value='Sport'>Sport</option>
+					</Form.Select>
 				</Form.Group>
 
 				<Form.Group className='mb-3'>

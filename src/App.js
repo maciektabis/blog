@@ -9,6 +9,8 @@ import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
 import AddPostForm from './components/features/AddPostForm/AddPostForm';
 import EditPostForm from './components/features/EditPostForm/EditPostForm';
+import Categories from './components/pages/Categories/Categories';
+import CategoryTable from './components/features/CategoryTable/CategoryTable';
 
 function App() {
 	return (
@@ -18,9 +20,12 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/post/:id' element={<SinglePost />} />
-					<Route path='/post/add' element={<AddPostForm/>} />
-					<Route path='/post/edit/:id' element={<EditPostForm/>} />
+					<Route path='/post/add' element={<AddPostForm />} />
+					<Route path='/post/edit/:id' element={<EditPostForm />} />
 					<Route path='/about' element={<About />} />
+					<Route path='/categories' element={<Categories />} />
+					<Route path='/categories/:category' element={<CategoryTable />} />
+
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 				<Footer />

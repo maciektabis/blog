@@ -3,6 +3,8 @@ import shortid from 'shortid';
 export const getAllPosts = (state) => state.posts;
 export const getPostById = ({posts}, id) =>
 	posts.find((post) => post.id === id);
+export const getPostByCategory = ({posts}, category) =>
+	posts.filter((post) => post.category === category);
 // actions
 const createActionName = (actionName) => `app/posts/${actionName}`;
 const REMOVE_POST = createActionName('REMOVE_POST');
