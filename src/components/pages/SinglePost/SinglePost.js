@@ -24,39 +24,38 @@ const SinglePost = () => {
 	const handleShow = () => setShow(true);
 
 	if (!postsData) return <Navigate to='/' />;
-	else;
-	return (
-		<div className='col-md-8'>
-			<header className='d-flex justify-content-between mt-2 mb-2 p-2'>
-				<h2>{postsData.title}</h2>
-				<div>
-					<Link key={postsData.id} to={'/post/edit/' + postsData.id}>
-						<Button variant='btn btn-outline-primary m-1'>Edit</Button>
-					</Link>
-					<Button variant='btn btn-outline-danger m-1' onClick={handleShow}>
-						Delete
-					</Button>
-
-					<Modal show={show} onHide={handleClose}>
-						<Modal.Header closeButton>
-							<Modal.Title>Are you sure?</Modal.Title>
-						</Modal.Header>
-						<Modal.Body>This will delete your post!</Modal.Body>
-						<Modal.Footer>
-							<Button variant='secondary' onClick={handleClose}>
-								Cancel
-							</Button>
-							<Button variant='danger' onClick={deletePost}>
-								Remove
-							</Button>
-						</Modal.Footer>
-					</Modal>
-				</div>
-			</header>
-			<p>Author: {postsData.author}</p>
-			<p>Published: {dateToStr(postsData.publishedDate)}</p>
-			<p dangerouslySetInnerHTML={{__html: postsData.content}} />
-		</div>
-	);
+	else
+		return (
+			<div className='col-md-8'>
+				<header className='d-flex justify-content-between mt-2 mb-2 p-2'>
+					<h2>{postsData.title}</h2>
+					<div>
+						<Link key={postsData.id} to={'/post/edit/' + postsData.id}>
+							<Button variant='btn btn-outline-primary m-1'>Edit</Button>
+						</Link>
+						<Button variant='btn btn-outline-danger m-1' onClick={handleShow}>
+							Delete
+						</Button>
+						<Modal show={show} onHide={handleClose}>
+							<Modal.Header closeButton>
+								<Modal.Title>Are you sure?</Modal.Title>
+							</Modal.Header>
+							<Modal.Body>This will delete your post!</Modal.Body>
+							<Modal.Footer>
+								<Button variant='secondary' onClick={handleClose}>
+									Cancel
+								</Button>
+								<Button variant='danger' onClick={deletePost}>
+									Remove
+								</Button>
+							</Modal.Footer>
+						</Modal>
+					</div>
+				</header>
+				<p>Author: {postsData.author}</p>
+				<p>Published: {dateToStr(postsData.publishedDate)}</p>
+				<p dangerouslySetInnerHTML={{__html: postsData.content}} />
+			</div>
+		);
 };
 export default SinglePost;
